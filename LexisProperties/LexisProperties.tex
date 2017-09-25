@@ -1,0 +1,608 @@
+%% BioMed_Central_Tex_Template_v1.06
+%%                                      %
+%  bmc_article.tex            ver: 1.06 %
+%                                       %
+
+%%IMPORTANT: do not delete the first line of this template
+%%It must be present to enable the BMC Submission system to
+%%recognise this template!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                     %%
+%%  LaTeX template for BioMed Central  %%
+%%     journal article submissions     %%
+%%                                     %%
+%%          <8 June 2012>              %%
+%%                                     %%
+%%                                     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% For instructions on how to fill out this Tex template           %%
+%% document please refer to Readme.html and the instructions for   %%
+%% authors page on the biomed central website                      %%
+%% http://www.biomedcentral.com/info/authors/                      %%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%% BioMed Central currently use the MikTex distribution of         %%
+%% TeX for Windows) of TeX and LaTeX.  This is available from      %%
+%% http://www.miktex.org                                           %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% additional documentclass options:
+%  [doublespacing]
+%  [linenumbers]   - put the line numbers on margins
+
+%%% loading packages, author definitions
+
+%\documentclass[twocolumn]{bmcart}% uncomment this for twocolumn layout and comment line below
+\documentclass{bmcart}
+
+%%% Load packages
+%\usepackage{amsthm,amsmath}
+% \RequirePackage{natbib}
+\RequirePackage[authoryear]{natbib}% uncomment this for author-year
+% bibliography
+%\RequirePackage{hyperref}
+%\usepackage[utf8]{inputenc} %unicode support
+%\usepackage[applemac]{inputenc} %applemac support if unicode package fails
+%\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% preamble from authors
+\usepackage{amsmath}
+\usepackage{amsthm}
+%\usepackage{appendix}
+%\usepackage{amssymb} % for approx greater than
+%\usepackage{caption}
+\usepackage{placeins} % for \FloatBarrier
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{tabularx}
+%\usepackage{xcolor,colortbl}
+\usepackage{chngpage}
+%\usepackage{natbib}
+%\bibpunct{(}{)}{,}{a}{}{;} 
+\usepackage{url}
+\usepackage{nth}
+%\usepackage{authblk}
+%\usepackage[most]{tcolorbox}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+% columns for longtable. These work if floats not being
+% pushed to end!! commented out to remove compile error
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\usepackage{arydshln} % Dashed lines in matrices
+\usepackage{lastpage}
+%\usepackage[margin=1in]{geometry}
+%\doublespacing % for review
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% places figures and tables at end. Required for review guidelines!!!
+%\usepackage[nolists, nomarkers]{endfloat}
+%\DeclareDelayedFloatFlavor{longtable}{table}
+%\renewcommand{\efloatseparator}{\mbox{}} % This removes pagebreaks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% for section 4 math environments
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[proposition]
+\newtheorem{remark}{Remark}[section]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\ackn[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% functions to read in table elements for timelines and graphs table in sec 4 (table 3)
+\newcommand{\ttt}[2]{\includegraphics[scale=.45]{{Figures/Tab3#1#2}.pdf}}
+
+% Affiliations in small font size
+%\renewcommand\Affilfont{\small}
+
+%\defcitealias{HMD}{HMD 2014}
+
+% junk for longtable caption
+%\AtBeginEnvironment{longtable}{\linespread{1}\selectfont}
+%\setlength{\LTcapwidth}{\linewidth}
+
+% sort van Raalte properly
+% #1: sorting key, #2: prefix for citation, #3: prefix for bibliography
+\DeclareRobustCommand{\VAN}[3]{#2} % set up for citation
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                             %%
+%%  If you wish to display your graphics for   %%
+%%  your own use using includegraphic or       %%
+%%  includegraphics, then comment out the      %%
+%%  following two lines of code.               %%
+%%  NB: These line *must* be included when     %%
+%%  submitting to BMC.                         %%
+%%  All figure files must be submitted as      %%
+%%  separate graphics through the BMC          %%
+%%  submission process, not included in the    %%
+%%  submitted article.                         %%
+%%                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\def\includegraphic{}
+%\def\includegraphics{}
+
+
+
+%%% Put your definitions there:
+\startlocaldefs
+\endlocaldefs
+
+
+%%% Begin ...
+\begin{document}
+
+%%% Start of article front matter
+\begin{frontmatter}
+
+\begin{fmbox}
+\dochead{Research}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the title of your article here     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{On some properties of generalized Lexis diagrams}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors here                   %%
+%%                                          %%
+%% Specify information, if available,       %%
+%% in the form:                             %%
+%%   <key>={<id1>,<id2>}                    %%
+%%   <key>=                                 %%
+%% Comment or delete the keys which are     %%
+%% not used. Repeat \author command as much %%
+%% as required.                             %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[
+   %addressref={aff1},          % id's of addresses, e.g. {aff1,aff2}
+   %corref={aff1},              % id of corresponding address, if any
+   %noteref={n1},               % id's of article notes, if any
+   email={riffe@mpidr.mpg.de}   % email address
+]{\fnm{Tim} \snm{Riffe}}
+\author[
+   %addressref={aff1},          % id's of addresses, e.g. {aff1,aff2}
+   %corref={aff1},              % id of corresponding address, if any
+   %noteref={n1},               % id's of article notes, if any
+   email={riffe@mpidr.mpg.de}   % email address
+]{\fnm{Jonas} \snm{Sch\"oley}}
+
+
+
+%\author[
+%%   addressref={aff1,aff2},
+%   email={john.RS.Smith@cambridge.co.uk}
+%]{\inits{JRS}\fnm{John RS} \snm{Smith}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter short notes here                   %%
+%%                                          %%
+%% Short notes will be after addresses      %%
+%% on first page.                           %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{artnotes}
+%\note{Sample of title note}     % note to the article
+\note[id=n1]{Equal contributor} % note, connected to author
+\end{artnotes}
+
+\end{fmbox}% comment this for two column layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The Abstract begins here                 %%
+%%                                          %%
+%% Please refer to the Instructions for     %%
+%% authors on http://www.biomedcentral.com  %%
+%% and include the section headings         %%
+%% accordingly for your article type.       %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstractbox}
+
+\begin{abstract} % abstract
+%\parttitle{First part title} %if any
+Time identities are relationships implied by events and the durations between
+them, such at the well-known age-period-cohort relationship. We describe the
+construction and structure of such identities.
+%\parttitle{Second part title} %if any
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The keywords begin here                  %%
+%%                                          %%
+%% Put each keyword in separate \kwd{}.     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{keyword}
+\kwd{age structure}
+\kwd{formal demography}
+\kwd{data visualization}
+\kwd{age period cohort}
+\end{keyword}
+
+% MSC classifications codes, if any
+%\begin{keyword}[class=AMS]
+%\kwd[Primary ]{}
+%\kwd{}
+%\kwd[; secondary ]{}
+%\end{keyword}
+
+\end{abstractbox}
+%
+%\end{fmbox}% uncomment this for twcolumn layout
+
+\end{frontmatter}
+
+\section{Introduction}
+Population processes are temporally structured. Sometimes we structure population stocks or flows by more than one element of time at
+once. Elements of time may include the moment of observation, the time points of
+events such as birth or death, or the time passed between events. Time measures can be categorized into two basic types:
+events and durations. Events include any measure at a point \emph{point}
+in time. This notion includes period itself, which one may imagine for our
+purposes as an infinite set of points. This is not to be confused with the
+common notion of period as a bounded duration of observation. Durations are time
+differences between pairs of events:
+Chronological age is an example of a duration, A = P -- C, for example, and many
+other durations may result from taking the time differences between arbitrarily
+paired events. For example, adding the event of marriage to the mix, M, results
+in several further implied time measures: age at marriage = M -- C, time until
+marriage (time married) = M -- P, if P < M (M > P), and so forth.
+
+\section{Constructing temporal identities.}
+\label{sec:framework}
+
+We begin this exposition by describing the construction of temporal
+identities, largely reproduced in the present section from
+\citet{riffe2017unified}. In the following we describe
+event-based time frameworks in terms of vector spaces which, via linear transformation, relate the timing of events with durations between events.
+
+\begin{definition} 
+  Let $\boldsymbol{p}=(p_1,\ldots,p_n)^\top\in\mathbf{R}^n$ be a vector of $n$
+  events or points in time with $n\geq2$. A corresponding vector of durations $\boldsymbol{d}\in\mathbf{R}^m$ is composed by elements of the form $d_{i,j}=p_j-p_i$ for $i=1,\dots,n-1$, $j=2,\dots,n$ and $j>i$.
+  \label{def:1}
+\end{definition}
+
+The vector of events $\boldsymbol{p}$ can be ordered in an arbitrary way as long as the same elements in $\boldsymbol{p}$ correspond to the same type of event for all observations. A consequence of this is that durations may be either
+negative or positive depending on the ordering of events over the life course.
+
+\begin{proposition}
+  Given a vector of events $\boldsymbol{p}=(p_1,\ldots,p_n)^\top\in\mathbf{R}^n$, the dimension of the corresponding vector of durations $\boldsymbol{d}\in\mathbf{R}^m$ is $m=n(n-1)/2$.
+\end{proposition}
+
+\begin{proof}
+  By definition, each element of $\boldsymbol{d}$ is formed by two different elements of $\boldsymbol{p}$. Therefore, the length of $\boldsymbol{d}$ is the number of combinations of 2 different elements from a set of size $n$, such that the order of selection does not matter. From combinatorial theory, it is well known that this value is given by the binomial coefficient $\binom{n}{2}=\frac{n!}{2!(n-2)!}=n(n-1)/2$.
+\end{proof}
+
+\begin{proposition}
+ For any vector of events $\boldsymbol{p}=(p_1,\ldots,p_n)^\top\in\mathbf{R}^n$, there is always a linear transformation $f:\mathbf{R}^n\to\mathbf{R}^m$ that provides a corresponding vector of durations $\boldsymbol{d}\in\mathbf{R}^m$.
+ \label{prop:2}
+\end{proposition}
+
+\begin{proof}
+ The existence of $f$ is a direct consequence of Definition~\ref{def:1}, given that all the elements of $\boldsymbol{d}$ are a linear combination of elements of $\boldsymbol{p}$. 
+\end{proof}
+
+\begin{corollary}
+ Given $\boldsymbol{p}=(p_1,\ldots,p_n)^\top\in\mathbf{R}^n$, suppose that $\boldsymbol{d}=(p_2-p_1,\dots,p_n-p_1,p_3-p_2,\dots,p_n-p_2,\dots,p_n-p_{n-1})$. Then, the linear transformation $f:\mathbf{R}^n\to\mathbf{R}^m$ that yields $\boldsymbol{d}$ from $\boldsymbol{p}$ is defined by the $m\times n$ matrix
+ %
+ \begin{align}
+  \boldsymbol{X}_{(m\times n)}&= \left(\begin{array}{cccccc}
+			  \multicolumn{1}{c:}{-1}			& \multicolumn{5}{c}{}					\\
+			  \multicolumn{1}{c:}{\vdots}	 		& \multicolumn{5}{c}{I_{n-1}}	 			\\  
+			  \multicolumn{1}{c:}{-1}			& \multicolumn{5}{c}{}					\\ \hdashline
+			  0		& \multicolumn{1}{c:}{-1}	& \multicolumn{4}{c}{}					\\	 
+			  \vdots	& \multicolumn{1}{c:}{\vdots}	& \multicolumn{4}{c}{I_{n-2}}  				\\
+			  0		& \multicolumn{1}{c:}{-1}	& \multicolumn{4}{c}{}					\\ \hdashline
+			  \multicolumn{6}{c}{\cdots}										\\ \hdashline
+			  0		& \cdots	& 0		& \multicolumn{1}{c:}{-1}	& 	& 		\\ 
+			  0		& \cdots	& 0		& \multicolumn{1}{c:}{-1}	& \multicolumn{2}{c}{\smash{\raisebox{.5\normalbaselineskip}{$I_2$}}}	\\ \hdashline
+			  0		& \multicolumn{2}{c}{\cdots}	& 0				& -1	& 1		\\
+			\end{array}\right)
+  \label{eq:matrix}\ ,
+ \end{align}
+  %
+ such that $\boldsymbol{d}=\boldsymbol{X}\times\boldsymbol{p}$, and where $I_k$ denotes the $k\times k$ identity matrix.
+\end{corollary}
+
+These results imply that given an arbitrary set of $n\geq2$ points in time, it
+is always possible to calculate the durations between any pair of these points. However, note that matrix $\boldsymbol{X}$ in \eqref{eq:matrix} yields a vector of durations $\boldsymbol{d}\in\mathbf{R}^m$ whose elements are sorted in an arbitrary way. The following statement may be relevant in this regard.
+
+\begin{proposition}
+ Given a vector of events $\boldsymbol{p}=(p_1,\ldots,p_n)^\top\in\mathbf{R}^n$, the corresponding vector of durations $\boldsymbol{d}\in\mathbf{R}^m$ is unique, irrespective of the sorting of its elements.
+\end{proposition}
+
+\begin{proof}
+ Let's suppose that $\boldsymbol{d^1}$ and $\boldsymbol{d^2}$ are two different
+ vectors of durations corresponding to the same vector of events
+ $\boldsymbol{p}\in\mathbf{R}^n$. Provided that $\boldsymbol{d^1}$ and
+ $\boldsymbol{d^2}$ are finite and, by definition, both have dimension $m$ and are formed by the same combinations of elements of $\boldsymbol{p}$, it will always be possible to re-arrange the elements of $\boldsymbol{d^2}$ in the same order as $\boldsymbol{d^1}$ such that $\boldsymbol{d^1}=\boldsymbol{d^2}$.
+\end{proof}
+
+This last proposition allows considering $\boldsymbol{X}$ as the matrix defining
+the linear transformation between points and durations. Given a vector
+$\boldsymbol{p}$ and the corresponding
+$\boldsymbol{d}=\boldsymbol{X}\times\boldsymbol{p}$, any differently sorted
+vector of durations would be obtained by swapping the rows of $\boldsymbol{X}$.
+Further, note that $\boldsymbol{X}$ does not have an inverse matrix, and
+therefore there is no linear transformation from durations to events. This is
+intuitively straightforward if one thinks that two vectors of events can yield
+the same vector of durations. In other words, a particular vector of durations
+can come from infinite different vectors of points in time. For instance, using
+$\boldsymbol{X}$, the vectors of events $\boldsymbol{p^1}=(1,2,3)$ and
+$\boldsymbol{p^2}=(2,3,4)$ both yield $\boldsymbol{d}=(1,2,1)$. 
+
+The relationship between events and durations can be
+systematically represented in a series of timelines and graphs that may better
+guide intuition.
+The joint relationship between events and durations is more explicit and more
+compact in a graph representation. As introduced in the following definition, the total number of time measures implied by a set of $n$ events and the corresponding durations is 
+$n+m=n+n(n-1)/2=n(n+1)/2$. 
+
+\begin{definition}
+Given a vector of events $\boldsymbol{p}=(p_1,\ldots,p_n)^\top\in\mathbf{R}^n$, $n\geq2$, and the corresponding vector of durations $\boldsymbol{d}\in\mathbf{R}^m$, we define the graph of time measures
+ $\boldsymbol{G}$ as the graph with $n+m=n+n(n+1)/2$ edges labelled by
+ $(\boldsymbol{p},\boldsymbol{d})\in\mathbf{R}^{n(n+1)/2}$ such that the relationships in Definition~\ref{def:1} are preserved.
+ \label{def:2}
+\end{definition}
+
+Table~3 displays a timeline and a graph for two, three, and four event sets. The central column shows timelines, a familiar linear representation of time, with events
+marked with red ticks labelled with $p_1 \ldots p_n$. Durations span
+each of the $m$ possible event dyads and are drawn below
+the main timeline as curly braces labelled with $d_{1,2} \ldots d_{n-1,n}$. The right
+column of Table~3 draws the corresponding graph with a total of $n+1$ vertices and $n+m=n(n+1)/2$ edges
+for the elements of both $\boldsymbol{p}$ and $\boldsymbol{d}$. All
+events of $\boldsymbol{p}$ connect to a single vertex, and event edges are
+indicated in red with red-circled labels. In this rendering, each triangle formed by three
+mutually connecting edges represents a triad identity. The top row $n=2$
+consists in a single identity. Three and four events imply a total of four and
+ten triad identities, respectively, and in general a given higher order identity
+will yield $\binom{n+1}{3}$ triad identities.
+We call this a temporal plane graph because the triangle resulting from any given triad sub-identity can be extended over
+all valid values of its time measures to form a temporal plane, as of the
+diagrams in a previous section (not in excerpt). The dimensionality of the extended diagram of a given identity follows from the
+number of events from which the identity is derived: $n=2$ produces a
+two-dimensional diagram, $n=3$ produces a 3-dimensional diagram, and so forth.
+
+\newcolumntype{S}{ >{\centering\arraybackslash} m{2cm} }
+\newcolumntype{D}{ >{\centering\arraybackslash} m{5.4cm} }
+\newcolumntype{E}{ >{\centering\arraybackslash} m{3.7cm} }
+
+\begin{table}[ht]
+\centering
+\caption{Event-duration timeline and graph for two, three, and four event
+ sequences.}
+\label{tab:timelines}
+\makebox[\linewidth][c]{
+\begin{tabular}{S D E}
+nr. events  & timeline & graph \\
+& &\\
+   $n = 2 $ & \ttt{1}{1} & \ttt{1}{2} \\
+   $n = 3 $ & \ttt{2}{1} & \ttt{2}{2} \\
+   $n = 4 $ & \ttt{3}{1} & \ttt{3}{2}
+\end{tabular}
+}
+\end{table}
+
+\begin{definition} 
+  We define $P\subseteq\mathbf{R}^n$ as the vector-space (event-space) spanning all possible values vector $\boldsymbol{p}$ may take, and $D\subseteq\mathbf{R}^m$ as the vector space spanning all possible instances of the duration vector $\boldsymbol{d}$. 
+  % (FV removed) Let the indices of the bases of $P$ and $D$ correspond to the
+  % indices of elements of $\boldsymbol{p}$ and $\boldsymbol{d}$.
+  \label{def:1b}
+\end{definition}
+
+Just like the APC diagram allows for \emph{all possible} combinations of period,
+cohort and age we may consider the vector space $P$ spanning all possible
+instances of $\boldsymbol{p}$. The calculation of durations between events as
+described in Proposition~\ref{prop:2} can then be understood as a linear
+transformation from a vector space $P$ whose bases represent events to a
+duration vector space $D$ whose bases represent durations.
+
+\FloatBarrier
+\section{Properties of higher order time identities}
+Here we list and prove some of the properties of higher-order
+identities, such as the number of ways they can be derived, the conditions
+for doing so, the number of event and duration measures they contain, and the
+number, size, and composition of sub-identities.
+
+\begin{proposition}
+\label{mixing} *(Work in progess)* Something that states that you can transform
+ $P^n \leftrightarrow M^n$ where the basis vectors of $M$ are a mixture of point dimensions and duration dimensions.
+\end{proposition}
+
+
+\begin{definition}{$\textbf{g}$}
+Let $\textbf{g} = \left\{p_{i=1,\ldots,n},
+d_{k=1,\ldots,m}\right\}$
+\end{definition}
+
+\begin{proposition} There are $b = (n+1)^{(n-1)}$ many
+ways to choose $n$ elements out of $\textbf{g}$ whoose linear combination yields the
+remaining $m$ elements of $\textbf{g}$.
+\end{proposition}
+
+\begin{proof}
+This is a case of Cayley's formula \citep{cayley1889}, a result from
+graph theory which gives the number of possible trees on $k = n+1$ vertices,
+$k^{(k-2)}$. In our case, the fully conected graph $\textbf{K}$ with edges
+defined by the elements of $\textbf{g}$ according to the third column of
+Table~\ref{tab:timelines}, is complete. By Cayley's fomula, the number of
+minimal spanning trees on $\textbf{K}$ is equal to $k^{(k-2)}$. Four different proofs of
+this result are given in \citet{aigner2010proofs}. The key is to realize that a
+minimal spanning tree (MST) on a complete graph will have $k-1$ edges, connected
+to each other and all $k$ vertices. As such, the remaining possible edges are
+linear combinations of any given MST.
+\end{proof}
+
+\begin{corollary}
+Each set of $n$ elements from $\textbf{g}$, $\textbf{b}'$ whose linear
+transformation yields the remaining $m$ elements of $\textbf{g}$ includes at
+least one element of $\textbf{p}$.
+\end{corollary}
+
+\begin{proof}
+One of the vertices of $\textbf{K}$, say the $k^{\text{th}}$ vertex, is
+connected only to edges labelled by the elements of $\textbf{p}$. Since a
+spanning tree of $\textbf{K}$ must connect to this vertex to fully connect
+$\textbf{K}$, all $b$ valid spanning trees must contain at least one edge
+labelled by an element of $\textbf{p}$.
+\end{proof}
+
+\begin{definition}{$\textbf{G}$}
+Let's define $\textbf{G}$ as the identity implied by $\textbf{g}$ whose
+graph is $\textbf{K}$.
+\end{definition}
+
+\begin{proposition}
+An identity $\textbf{G}$ implies a total of $\binom{n+1}{3}$ triad
+sub-identities.
+\end{proposition}
+
+\begin{proof}
+Any set of three vertices from $\textbf{K}$ forms a complete subgraph, and any
+complete subgraph implies an identity between its labelled edges. $\textbf{K}$
+has $n+1$ vertices, and therefore there are $\binom{n+1}{3}$ ways to select
+three vertices from $\textbf{K}$, hence $\textbf{G}$ implies the same number of
+triad subidentities.
+\end{proof}
+
+\begin{corollary}
+Of the $\binom{n+1}{3}$ triad identies implied by $\textbf{G}$, $\binom{n}{2}$
+contain exactly two events and one duration.
+\end{corollary}
+
+\begin{proof}
+This follows by noting that the $n$ event-labelled edges in $\textbf{K}$ connect
+to a single vertex. Selecting any two of these $n$ event-labelled edges implies
+a tree on three vertices, whose full connection implies a triad identity
+composed of the two event edges and one duration edge defined as the time-difference of the
+former two. There are $\binom{n}{2}$ ways to select two of of the $n$ event
+edges.
+\end{proof}
+
+\begin{corollary}
+For $n \ge 3$, of the $\binom{n+1}{3}$ triad identies implied by $\textbf{G}$,
+$\binom{n+1}{3} - \binom{n}{2} = \binom{n}{3}$ are composed of exactly three
+durations.
+\end{corollary}
+
+\begin{proof}
+This is equivalent to deleting the vertex $k^{\text{th}}$ from $\textbf{K}$, the
+vertex that connects only to event-labelled edges, which is constructed
+following the middle column of graphs from Table~\ref{tab:timelines} with
+vertex labels ignored. This graph has $n$ total vertices, and any set of 3
+vertices implies an identity between its three labelled edges, which in this
+case by definition can only consist of durations.
+\end{proof}
+
+For example, in the demographic time identity there are $n=3$ event measures.
+Thus of the $\binom{4}{3} = 4$ triad identities implied $\binom{3}{3} = 1$ of
+these identities consist in durations only (TAL). Notice that the measures T and
+A change over the lifecourse of an individual, whereas their sum L is fixed.
+
+\begin{definition}{$\textbf{d}_t$} For $\textbf{p}$ that include period
+itself, let $\textbf{d}_t$ be the set of duration time measures that change over
+the life course and $\textbf{d}_f$ consist in those durations that are fixed attributed of an individual. By
+definition, $\textbf{d}_t \cup \textbf{d}_f = \textbf{d}$.
+\end{definition}
+
+\begin{corollary}
+For $n \ge 4$ and For $\textbf{p}$ that include period
+itself, of the $d'=\binom{n}{3}$ triad identies whose edges are
+labelled only by the elements of $\textbf{d}$, $d^t=\binom{d'}{2}$ of these identities
+consist in exactly two elements of $\textbf{d}_t$ and one element of
+$\textbf{d}_f$, while $d'-d^t$ of the duration-only triad identities consist in
+relationships between three elements of $\textbf{d}_f$.
+\end{corollary}
+
+\begin{proof}
+$n-2$ of the edges in $K$ are labelled with the elements of $\textbf{d}_t$, and
+these all connect to the same vertex. There are therefore $\binom{n-2}{2}$ ways
+to form triad identities with them. The third element of each of these
+identities cannot connect to the same vertex, and so must be a member of
+$\textbf{d}_f$. 
+\end{proof}
+
+\begin{proposition}
+In general, the number of subidentities of size $h$ in $\textbf{G}$ is equal to
+$\binom{n+1}{n+1-h} \quad \forall \, h \le n$.
+\end{proposition}
+
+\begin{proof}
+Vertex deletion on a complete graph results in a complete subgraph. Therefore,
+the number of possible complete subgraphs with $h$ vertices is a function of the
+number of ways that $n+1-h$ vertices can be deleted from $\textbf{K}$, which is
+$\binom{n+1}{n+1-h}$. The labelled edges of each possible complete subgraph
+defined in this way represent subidentities.
+\end{proof}
+
+For example, from the tetrahedral graph in Fig.~\ref{fig:tet}, we may
+delete the vertex that joins the edges labelled A, T, and P, which in effect
+deletes these edges, leaving us with the CDL identity. 
+
+\begin{corollary}
+Each time measure in $\textbf{G}$ is a member of $n-1$ triad subidentities.
+\end{corollary}
+
+\begin{proof}
+In the graph $\textbf{K}$, an edge labelled by a given time measure connects to
+two of the $n+1$ vertices. A full connection to any other vertex yields a
+complete subgraph with three edges, representing a triad identity. There are
+$n-1$ remainign vertices that can be connected to, ergo the given edge is a
+member of $n-1$ triad subidentities.
+\end{proof}
+
+
+\begin{backmatter}
+
+%\section*{Competing interests}
+%  The authors declare that they have no competing interests.
+
+%\section*{Author's contributions}
+%    Text for this section \ldots
+
+\section*{Acknowledgements}
+We wish to thank Francisco Villavicencio for comments that improved our
+exposition.
+
+\bibliographystyle{chicago}
+\bibliography{references}  
+\end{backmatter}
+\end{document}

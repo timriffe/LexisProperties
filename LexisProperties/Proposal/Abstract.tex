@@ -1,0 +1,628 @@
+%% BioMed_Central_Tex_Template_v1.06
+%%                                      %
+%  bmc_article.tex            ver: 1.06 %
+%                                       %
+
+%%IMPORTANT: do not delete the first line of this template
+%%It must be present to enable the BMC Submission system to
+%%recognise this template!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                     %%
+%%  LaTeX template for BioMed Central  %%
+%%     journal article submissions     %%
+%%                                     %%
+%%          <8 June 2012>              %%
+%%                                     %%
+%%                                     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% For instructions on how to fill out this Tex template           %%
+%% document please refer to Readme.html and the instructions for   %%
+%% authors page on the biomed central website                      %%
+%% http://www.biomedcentral.com/info/authors/                      %%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%% BioMed Central currently use the MikTex distribution of         %%
+%% TeX for Windows) of TeX and LaTeX.  This is available from      %%
+%% http://www.miktex.org                                           %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% additional documentclass options:
+%  [doublespacing]
+%  [linenumbers]   - put the line numbers on margins
+
+%%% loading packages, author definitions
+
+%\documentclass[twocolumn]{bmcart}% uncomment this for twocolumn layout and comment line below
+\documentclass{bmcart}
+
+%%% Load packages
+%\usepackage{amsthm,amsmath}
+% \RequirePackage{natbib}
+\RequirePackage[authoryear]{natbib}% uncomment this for author-year
+% bibliography
+%\RequirePackage{hyperref}
+%\usepackage[utf8]{inputenc} %unicode support
+%\usepackage[applemac]{inputenc} %applemac support if unicode package fails
+%\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% preamble from authors
+\usepackage{amsmath}
+\usepackage{amsthm}
+%\usepackage{appendix}
+%\usepackage{amssymb} % for approx greater than
+%\usepackage{caption}
+\usepackage{placeins} % for \FloatBarrier
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{tabularx}
+%\usepackage{xcolor,colortbl}
+\usepackage{chngpage}
+%\usepackage{natbib}
+%\bibpunct{(}{)}{,}{a}{}{;} 
+\usepackage{url}
+\usepackage{nth}
+%\usepackage{authblk}
+%\usepackage[most]{tcolorbox}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+% columns for longtable. These work if floats not being
+% pushed to end!! commented out to remove compile error
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\usepackage{arydshln} % Dashed lines in matrices
+\usepackage{lastpage}
+%\usepackage[margin=1in]{geometry}
+%\doublespacing % for review
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% places figures and tables at end. Required for review guidelines!!!
+%\usepackage[nolists, nomarkers]{endfloat}
+%\DeclareDelayedFloatFlavor{longtable}{table}
+%\renewcommand{\efloatseparator}{\mbox{}} % This removes pagebreaks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% for section 4 math environments
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[proposition]
+\newtheorem{remark}{Remark}[section]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\ackn[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% functions to read in table elements for timelines and graphs table in sec 4 (table 3)
+\newcommand{\ttt}[2]{\includegraphics[scale=.45]{{Tab3#1#2}.pdf}}
+
+% Affiliations in small font size
+%\renewcommand\Affilfont{\small}
+
+%\defcitealias{HMD}{HMD 2014}
+
+% junk for longtable caption
+%\AtBeginEnvironment{longtable}{\linespread{1}\selectfont}
+%\setlength{\LTcapwidth}{\linewidth}
+
+% sort van Raalte properly
+% #1: sorting key, #2: prefix for citation, #3: prefix for bibliography
+\DeclareRobustCommand{\VAN}[3]{#2} % set up for citation
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                             %%
+%%  If you wish to display your graphics for   %%
+%%  your own use using includegraphic or       %%
+%%  includegraphics, then comment out the      %%
+%%  following two lines of code.               %%
+%%  NB: These line *must* be included when     %%
+%%  submitting to BMC.                         %%
+%%  All figure files must be submitted as      %%
+%%  separate graphics through the BMC          %%
+%%  submission process, not included in the    %%
+%%  submitted article.                         %%
+%%                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\def\includegraphic{}
+%\def\includegraphics{}
+
+
+
+%%% Put your definitions there:
+\startlocaldefs
+\endlocaldefs
+
+
+%%% Begin ...
+\begin{document}
+
+%%% Start of article front matter
+\begin{frontmatter}
+
+\begin{fmbox}
+\dochead{Research}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the title of your article here     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{On some properties of generalized Lexis diagrams}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors here                   %%
+%%                                          %%
+%% Specify information, if available,       %%
+%% in the form:                             %%
+%%   <key>={<id1>,<id2>}                    %%
+%%   <key>=                                 %%
+%% Comment or delete the keys which are     %%
+%% not used. Repeat \author command as much %%
+%% as required.                             %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[
+   %addressref={aff1},          % id's of addresses, e.g. {aff1,aff2}
+   %corref={aff1},              % id of corresponding address, if any
+   %noteref={n1},               % id's of article notes, if any
+   email={riffe@mpidr.mpg.de}   % email address
+]{\fnm{Tim} \snm{Riffe}}
+\author[
+   %addressref={aff1},          % id's of addresses, e.g. {aff1,aff2}
+   %corref={aff1},              % id of corresponding address, if any
+   %noteref={n1},               % id's of article notes, if any
+   email={riffe@mpidr.mpg.de}   % email address
+]{\fnm{Jonas} \snm{Sch\"oley}}
+
+
+
+%\author[
+%%   addressref={aff1,aff2},
+%   email={john.RS.Smith@cambridge.co.uk}
+%]{\inits{JRS}\fnm{John RS} \snm{Smith}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter short notes here                   %%
+%%                                          %%
+%% Short notes will be after addresses      %%
+%% on first page.                           %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{artnotes}
+%\note{Sample of title note}     % note to the article
+\note[id=n1]{Equal contributor} % note, connected to author
+\end{artnotes}
+
+\end{fmbox}% comment this for two column layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The Abstract begins here                 %%
+%%                                          %%
+%% Please refer to the Instructions for     %%
+%% authors on http://www.biomedcentral.com  %%
+%% and include the section headings         %%
+%% accordingly for your article type.       %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstractbox}
+
+\begin{abstract} % abstract
+%\parttitle{First part title} %if any
+Demographic thought and practice is largely conditioned by the Lexis diagram,
+a two-dimensional graphical representation of the identity between age,
+period, and birth cohort. This relationship does not account for remaining years
+of life, total length of life, or time of death, whose use in
+demographic research is both underrepresented and incompletely situated. We
+describe an identity between these six demographic time measures, and
+we generalize this relationship to time measures derived from an arbitrary
+number of events in calendar time.
+%\parttitle{Second part title} %if any
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The keywords begin here                  %%
+%%                                          %%
+%% Put each keyword in separate \kwd{}.     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{keyword}
+\kwd{age structure}
+\kwd{formal demography}
+\kwd{data visualization}
+\kwd{age period cohort}
+\end{keyword}
+
+% MSC classifications codes, if any
+%\begin{keyword}[class=AMS]
+%\kwd[Primary ]{}
+%\kwd{}
+%\kwd[; secondary ]{}
+%\end{keyword}
+
+\end{abstractbox}
+%
+%\end{fmbox}% uncomment this for twcolumn layout
+
+\end{frontmatter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The Main Body begins here                %%
+%%                                          %%
+%% Please refer to the instructions for     %%
+%% authors on:                              %%
+%% http://www.biomedcentral.com/info/authors%%
+%% and include the section headings         %%
+%% accordingly for your article type.       %%
+%%                                          %%
+%% See the Results and Discussion section   %%
+%% for details on how to create sub-sections%%
+%%                                          %%
+%% use \cite{...} to cite references        %%
+%%  \cite{koon} and                         %%
+%%  \cite{oreg,khar,zvai,xjon,schn,pond}    %%
+%%  \nocite{smith,marg,hunn,advi,koha,mouse}%%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% start of article main body
+% <put your article body there>
+
+%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+In the course of training, all demographers are introduced
+to the Lexis diagram, a convenient graphical identity between the three main
+time measures used to structure demographic stocks and flows: age, period, and
+birth cohort. A large number of temporal identities of this kind can be conjured up, and each such identity can also be represented on a plane, or used to structure data similarly to APC. In this paper we show how such identities relate to one another in potentially complex higher-order temporal identities. The following section is an excerpt from a paper in review, and that section has never itself been presented in public, nor is it the focus of that paper. We would be keen to expand the results presented, especially to derive some results on the \emph{types} of APC-like identities implied by higher order identities.
+
+\section*{A general framework}
+\label{sec:framework}
+
+A general relationship between events and durations serves to
+contextualize APC, but also to compare it with
+other relatively complicated temporal designs in the literature. Time measures can be categorized into two basic types:
+events and durations. Events include birth (C) and death (D) cohort, as well as period
+itself (P), or any other \emph{point} in time. Durations are time differences between pairs of events: chronological age A = P -- C, 
+thanatological age T = D -- P, and lifespan L = D -- C. In the following we
+describe APC, APCTDL (the combination of the above four identities) and other time frameworks in terms of vector spaces which, via linear transformation, relate the timing of events with durations between events.
+
+\begin{definition} 
+  Let $\boldsymbol{p}=(p_1,\ldots,p_n)^\top\in\mathbf{R}^n$ be a vector of $n$
+  events or points in time with $n\geq2$. A corresponding vector of durations $\boldsymbol{d}\in\mathbf{R}^m$ is composed by elements of the form $d_{i,j}=p_j-p_i$ for $i=1,\dots,n-1$, $j=2,\dots,n$ and $j>i$.
+  \label{def:1}
+\end{definition}
+
+The vector of events $\boldsymbol{p}$ can be ordered in an arbitrary way as long as the same elements in $\boldsymbol{p}$ correspond to the same type of event for all observations. A consequence of this is that durations may be either
+negative or positive depending on the ordering of events over the life course.
+
+\begin{proposition}
+  Given a vector of events $\boldsymbol{p}=(p_1,\ldots,p_n)^\top\in\mathbf{R}^n$, the dimension of the corresponding vector of durations $\boldsymbol{d}\in\mathbf{R}^m$ is $m=n(n-1)/2$.
+\end{proposition}
+
+\begin{proof}
+  By definition, each element of $\boldsymbol{d}$ is formed by two different elements of $\boldsymbol{p}$. Therefore, the length of $\boldsymbol{d}$ is the number of combinations of 2 different elements from a set of size $n$, such that the order of selection does not matter. From combinatorial theory, it is well known that this value is given by the binomial coefficient $\binom{n}{2}=\frac{n!}{2!(n-2)!}=n(n-1)/2$.
+\end{proof}
+
+\begin{proposition}
+ For any vector of events $\boldsymbol{p}=(p_1,\ldots,p_n)^\top\in\mathbf{R}^n$, there is always a linear transformation $f:\mathbf{R}^n\to\mathbf{R}^m$ that provides a corresponding vector of durations $\boldsymbol{d}\in\mathbf{R}^m$.
+ \label{prop:2}
+\end{proposition}
+
+\begin{proof}
+ The existence of $f$ is a direct consequence of Definition~\ref{def:1}, given that all the elements of $\boldsymbol{d}$ are a linear combination of elements of $\boldsymbol{p}$. 
+\end{proof}
+
+\begin{corollary}
+ Given $\boldsymbol{p}=(p_1,\ldots,p_n)^\top\in\mathbf{R}^n$, suppose that $\boldsymbol{d}=(p_2-p_1,\dots,p_n-p_1,p_3-p_2,\dots,p_n-p_2,\dots,p_n-p_{n-1})$. Then, the linear transformation $f:\mathbf{R}^n\to\mathbf{R}^m$ that yields $\boldsymbol{d}$ from $\boldsymbol{p}$ is defined by the $m\times n$ matrix
+ %
+ \begin{align}
+  \boldsymbol{X}_{(m\times n)}&= \left(\begin{array}{cccccc}
+			  \multicolumn{1}{c:}{-1}			& \multicolumn{5}{c}{}					\\
+			  \multicolumn{1}{c:}{\vdots}	 		& \multicolumn{5}{c}{I_{n-1}}	 			\\  
+			  \multicolumn{1}{c:}{-1}			& \multicolumn{5}{c}{}					\\ \hdashline
+			  0		& \multicolumn{1}{c:}{-1}	& \multicolumn{4}{c}{}					\\	 
+			  \vdots	& \multicolumn{1}{c:}{\vdots}	& \multicolumn{4}{c}{I_{n-2}}  				\\
+			  0		& \multicolumn{1}{c:}{-1}	& \multicolumn{4}{c}{}					\\ \hdashline
+			  \multicolumn{6}{c}{\cdots}										\\ \hdashline
+			  0		& \cdots	& 0		& \multicolumn{1}{c:}{-1}	& 	& 		\\ 
+			  0		& \cdots	& 0		& \multicolumn{1}{c:}{-1}	& \multicolumn{2}{c}{\smash{\raisebox{.5\normalbaselineskip}{$I_2$}}}	\\ \hdashline
+			  0		& \multicolumn{2}{c}{\cdots}	& 0				& -1	& 1		\\
+			\end{array}\right)
+  \label{eq:matrix}\ ,
+ \end{align}
+  %
+ such that $\boldsymbol{d}=\boldsymbol{X}\times\boldsymbol{p}$, and where $I_k$ denotes the $k\times k$ identity matrix.
+\end{corollary}
+
+These results imply that given an arbitrary set of $n\geq2$ points in time, it
+is always possible to calculate the durations between any pair of these points. However, note that matrix $\boldsymbol{X}$ in \eqref{eq:matrix} yields a vector of durations $\boldsymbol{d}\in\mathbf{R}^m$ whose elements are sorted in an arbitrary way. The following statement may be relevant in this regard.
+
+\begin{proposition}
+ Given a vector of events $\boldsymbol{p}=(p_1,\ldots,p_n)^\top\in\mathbf{R}^n$, the corresponding vector of durations $\boldsymbol{d}\in\mathbf{R}^m$ is unique, irrespective of the sorting of its elements.
+\end{proposition}
+
+\begin{proof}
+ Let's suppose that $\boldsymbol{d^1}$ and $\boldsymbol{d^2}$ are two different
+ vectors of durations corresponding to the same vector of events
+ $\boldsymbol{p}\in\mathbf{R}^n$. Provided that $\boldsymbol{d^1}$ and
+ $\boldsymbol{d^2}$ are finite and, by definition, both have dimension $m$ and are formed by the same combinations of elements of $\boldsymbol{p}$, it will always be possible to re-arrange the elements of $\boldsymbol{d^2}$ in the same order as $\boldsymbol{d^1}$ such that $\boldsymbol{d^1}=\boldsymbol{d^2}$.
+\end{proof}
+
+This last proposition allows considering $\boldsymbol{X}$ as the matrix defining
+the linear transformation between points and durations. Given a vector
+$\boldsymbol{p}$ and the corresponding
+$\boldsymbol{d}=\boldsymbol{X}\times\boldsymbol{p}$, any differently sorted
+vector of durations would be obtained by swapping the rows of $\boldsymbol{X}$.
+Further, note that $\boldsymbol{X}$ does not have an inverse matrix, and
+therefore there is no linear transformation from durations to events. This is
+intuitively straightforward if one thinks that two vectors of events can yield
+the same vector of durations. In other words, a particular vector of durations
+can come from infinite different vectors of points in time. For instance, using
+$\boldsymbol{X}$, the vectors of events $\boldsymbol{p^1}=(1,2,3)$ and
+$\boldsymbol{p^2}=(2,3,4)$ both yield $\boldsymbol{d}=(1,2,1)$. With respect to
+the six time measures discussed here, note that the events CPD yield TAL, but TAL does not yield CPD.
+
+The relationship between events and durations can be
+systematically represented in a series of timelines and graphs that may better
+guide intuition.
+The joint relationship between events and durations is more explicit and more
+compact in a graph representation. As introduced in the following definition, the total number of time measures implied by a set of $n$ events and the corresponding durations is 
+$n+m=n+n(n-1)/2=n(n+1)/2$. 
+
+\begin{definition}
+Given a vector of events $\boldsymbol{p}=(p_1,\ldots,p_n)^\top\in\mathbf{R}^n$, $n\geq2$, and the corresponding vector of durations $\boldsymbol{d}\in\mathbf{R}^m$, we define the graph of time measures
+ $\boldsymbol{G}$ as the graph with $n+m=n+n(n+1)/2$ edges labelled by
+ $(\boldsymbol{p},\boldsymbol{d})\in\mathbf{R}^{n(n+1)/2}$ such that the relationships in Definition~\ref{def:1} are preserved.
+ \label{def:2}
+\end{definition}
+
+Table~3 displays a timeline and a graph for two, three, and four event sets. The central column shows timelines, a familiar linear representation of time, with events
+marked with red ticks labelled with $p_1 \ldots p_n$. Durations span
+each of the $m$ possible event dyads and are drawn below
+the main timeline as curly braces labelled with $d_{1,2} \ldots d_{n-1,n}$. The right
+column of Table~3 draws the corresponding graph with a total of $n+1$ vertices and $n+m=n(n+1)/2$ edges
+for the elements of both $\boldsymbol{p}$ and $\boldsymbol{d}$. All
+events of $\boldsymbol{p}$ connect to a single vertex, and event edges are
+indicated in red with red-circled labels. In this rendering, each triangle formed by three
+mutually connecting edges represents a triad identity. The top row $n=2$
+consists in a single identity. Three and four events imply a total of four and
+ten triad identities, respectively, and in general a given higher order identity
+will yield $\binom{n+1}{3}$ triad identities.
+We call this a temporal plane graph because the triangle resulting from any given triad sub-identity can be extended over
+all valid values of its time measures to form a temporal plane, as of the
+diagrams in a previous section (not in excerpt). The dimensionality of the extended diagram of a given identity follows from the
+number of events from which the identity is derived: $n=2$ produces a
+two-dimensional diagram, $n=3$ produces a 3-dimensional diagram, and so forth.
+
+\newcolumntype{S}{ >{\centering\arraybackslash} m{2cm} }
+\newcolumntype{D}{ >{\centering\arraybackslash} m{5.4cm} }
+\newcolumntype{E}{ >{\centering\arraybackslash} m{3.7cm} }
+
+\begin{table}[ht]
+\centering
+\caption{Event-duration timeline and graph for two, three, and four event
+ sequences.}
+\label{tab:timelines}
+\makebox[\linewidth][c]{
+\begin{tabular}{S D E}
+nr. events  & timeline & graph \\
+& &\\
+   $n = 2 $ & \ttt{1}{1} & \ttt{1}{2} \\
+   $n = 3 $ & \ttt{2}{1} & \ttt{2}{2} \\
+   $n = 4 $ & \ttt{3}{1} & \ttt{3}{2}
+\end{tabular}
+}
+\end{table}
+
+\begin{definition} 
+  We define $P\subseteq\mathbf{R}^n$ as the vector-space (event-space) spanning all possible values vector $\boldsymbol{p}$ may take, and $D\subseteq\mathbf{R}^m$ as the vector space spanning all possible instances of the duration vector $\boldsymbol{d}$. 
+  % (FV removed) Let the indices of the bases of $P$ and $D$ correspond to the
+  % indices of elements of $\boldsymbol{p}$ and $\boldsymbol{d}$.
+  \label{def:1b}
+\end{definition}
+
+Just like the APC diagram allows for \emph{all possible} combinations of period,
+cohort and age we may consider the vector space $P$ spanning all possible
+instances of $\boldsymbol{p}$. The calculation of durations between events as
+described in Proposition~\ref{prop:2} can then be understood as a linear
+transformation from a vector space $P$ whose bases represent events to a
+duration vector space $D$ whose bases represent durations.
+
+\FloatBarrier
+\subsection{Examples}
+\label{sec:examples}
+The following examples show how different demographic time frameworks can all be expressed as instances of the event-duration vector space defined above.
+
+\paragraph{Example 1: The Lexis surface}
+
+Let $\boldsymbol{p}$ have two elements, as in the first row of
+Table~3. Then $\boldsymbol{d}$ consists of just one element, defined as
+
+\begin{equation}
+d_{1,2} = p_2 - p_1   \quad\quad.
+\end{equation}
+%
+Interpreting $d_{1,2}$ as \emph{age}, $p_2$ as \emph{period}, and $p_1$ as
+\emph{birth cohort} yields the APC identity. The standard Lexis surface is
+constructed via a change of basis from the event-space $P$, featuring basis vectors $(p_1,
+p_2)$, to the event-duration space $M$, featuring basis vectors ($p_2, d_{1,2}$).
+
+\paragraph{Example 2: Lexis' marriage identity}
+
+Along with his well known 2-dimensional diagram \citet{lexis1875einleitung} also
+described a 3-dimensional extension applied to the marriage and
+separation processes, reproduced in \citet{keiding2006event}. Let $\boldsymbol{p}$ have three elements, as in the second row of
+Table~3. Then $\boldsymbol{d}$ is defined as
+
+\begin{equation}
+\label{eq:p3}
+\begin{matrix}
+d_{1,2} = p_2 - p_1\\
+d_{1,3} = p_3 - p_1\\
+d_{2,3} = p_3 - p_2
+\end{matrix} \quad\quad.
+\end{equation}
+%
+Interpreting $p_1$ as \textit{birth cohort}, $p_2$ as \textit{marriage cohort} and $p_3$ as
+\textit{separation cohort} yields the durations $d_{1,2}$ as \textit{age at
+marriage}, $d_{1,3}$ as \textit{age at separation}, and $d_{2,3}$ as
+\textit{duration of marriage}. Lexis' ``marriage space'' $M$ is reconstructed by
+a change of basis from $P\subseteq\mathbf{R}^3\to M\subseteq\mathbf{R}^3$, with
+the new orthogonal basis formed by $(p_1, d_{1,2}, d_{2,3})$.
+
+\paragraph{Example 3: Adding death cohort to the Lexis surface}
+
+As in Example 2 we start with a three element vector
+$\boldsymbol{p}$ yielding the very same identities as in Eq.~\eqref{eq:p3} and the second row of Table~3, but with different interpretations.
+Interpreting $p_1$ as \textit{birth cohort}, $p_2$ as \textit{period} and $p_3$
+as \textit{death cohort} yields the durations $d_{1,2}$ as \textit{chronological
+age}, $d_{1,3}$ as \textit{lifespan}, and $d_{2,3}$ as \textit{time to death}.
+This vector space contains the Lexis surface as a sub-space, as well as the other planes presented in a previous section (not in excerpt). We return to this identity
+in the following sections.
+
+\paragraph{Example 4: Brinks' Illness-Death model}
+
+\citet{brinks2014lexis} describe an illness-death process atop the Lexis
+surface, and with diagnosis and death as additional events, for a total of four
+events. Let $\boldsymbol{p}$ have four elements, as in the third row of
+Table~3. Then $\boldsymbol{d}$ is defined as:
+
+\begin{equation}
+\label{eq:p4}
+\begin{matrix}
+d_{1,2} = p_2 - p_1\\
+d_{1,3} = p_3 - p_1\\
+d_{2,3} = p_3 - p_2\\
+d_{1,4} = p_4 - p_1\\
+d_{2,4} = p_4 - p_2\\
+d_{3,4} = p_4 - p_3
+\end{matrix} \quad\quad.
+\end{equation}
+
+Interpreting $p_1$ as \textit{birth cohort}, $p_2$ as \textit{period}, $p_3$ as
+\textit{time at diagnosis}, and $p_4$ as \textit{death cohort} yields the following composition
+of $\boldsymbol{d}$: $d_{1,2}$ is \textit{chronological age}, $d_{1,3}$ is
+\textit{age at diagnosis}, $d_{1,4}$ is \textit{lifespan}, $d_{2,3}$ is
+\textit{time to/since diagnosis},\footnote{For points
+in time past the time at diagnosis $d_{2,3}$ becomes negative and can be
+interpreted at time since diagnosis.} $d_{2,4}$ is \textit{time to
+death}, and $d_{3,4}$ is duration of illness (an irreversible state).
+
+Unlike the other examples, the actual vector-space of demographic
+time shown in \citet{brinks2014lexis} Fig.~2 only identifies a
+\emph{subset} of the times-measures implied by the model of the
+authors, namely age ($y$-axis), period ($x$-axis), birth cohort (implied by a
+linear combination of age and period) and duration of disease ($z$ axis).
+Although lifelines in this depiction only begin to ascend into the disease
+duration axis at the time of disease diagnosis, this event time measure is not
+ascribed to an axis per se or implied by the other axes, and no further time
+scales can be derived from the three axes drawn.
+Instead, a few additional events and durations (death cohort, timing of
+diagnosis and duration of disease) are introduced as \emph{markings} within the three
+dimensional vector space, just as one would mark \emph{specific} life-lines on
+a Lexis-diagram without accounting for \emph{all possible} life-lines.
+Instead, the four-dimensional vector-space can be considered as the larger
+setting within which this model operates.
+
+\section*{What we propose to add to this presentation}
+Higher order identities are composed of a number of triad (APC-like) identities. Some of these are between two events and a duration, and some are between three durations. Some durations relate to calendar time, and therefore scale up (like age) or down (like time to death). Using simple combinatorics on the kinds of graphs presented in the previous section, we would derive formulae that describe the compositional properties of higher-order temporal identities in terms of APC-subidentities. We aim to reflect on the variety of identities and how they relate to APC practice and discourse.
+%\nocite{oreg,schn,pond,smith,marg,hunn,advi,koha,mouse}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Backmatter begins here                   %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{backmatter}
+
+%\section*{Competing interests}
+%  The authors declare that they have no competing interests.
+
+%\section*{Author's contributions}
+%    Text for this section \ldots
+
+\section*{Acknowledgements}
+We wish to thank Francisco Villavicencio for comments that improved the section
+excerpt that is the bulk of this proposal.
+
+%  Text for this section \ldots
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                  The Bibliography                       %%
+%%                                                         %%
+%%  Bmc_mathpys.bst  will be used to                       %%
+%%  create a .BBL file for submission.                     %%
+%%  After submission of the .TEX file,                     %%
+%%  you will be prompted to submit your .BBL file.         %%
+%%                                                         %%
+%%                                                         %%
+%%  Note that the displayed Bibliography will not          %%
+%%  necessarily be rendered by Latex exactly as specified  %%
+%%  in the online Instructions for Authors.                %%
+%%                                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% if your bibliography is in bibtex format, use those commands:
+% \bibliographystyle{bmc-mathphys} % Style BST file (bmc-mathphys, vancouver, spbasic).
+\bibliographystyle{chicago}
+\bibliography{references}      % Bibliography file (usually '*.bib' )
+% for author-year bibliography (bmc-mathphys or spbasic)
+% a) write to bib file (bmc-mathphys only)
+% @settings{label, options="nameyear"}
+% b) uncomment next line
+%\nocite{label}
+
+% or include bibliography directly:
+% \begin{thebibliography}
+% \bibitem{b1}
+% \end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Figures                       %%
+%%                               %%
+%% NB: this is for captions and  %%
+%% Titles. All graphics must be  %%
+%% submitted separately and NOT  %%
+%% included in the Tex document  %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%
+%% Do not use \listoffigures as most will included as separate files
+
+\end{backmatter}
+\end{document}
