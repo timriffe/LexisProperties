@@ -1,0 +1,245 @@
+%% 
+%%	This is file 'beamer_sample.tex'
+%%	according to an MPIDR's PowerPoint template (?)
+%%	
+%%	by Eric Naujoks
+%%
+%%	Problems, bugs and comments to 
+%%	naujoks@demogr.mpg.de
+%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%	Praelegomena								%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%	- Make sure that you use utf8-encoding for all your .tex-files!!! (TeXnicCenter since version 2.0)
+%%	- TeXnicCenter update: MPIDR intranet > Hard- & Sortfware > Software > Script and text editors > TeXnicCenter
+
+\documentclass[20pt]{beamer}
+
+\usepackage[ngerman,english]{babel}
+\usepackage{tikz}
+\usepackage[normalem]{ulem}
+\geometry{paperwidth=10in, paperheight=7.5in}
+\usepackage{animate}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[mpidr]{./mpidr/beamerthemeMPIDR}
+\usefonttheme{serif}
+
+
+%% Declaring title and author
+\title{Properties of generalized Lexis identities}
+\subtitle{Tim Riffe \\ Jonas Sch{\"o}ley}		%%
+
+%%	the institute's logo
+\renewcommand{\mylogo}{\includegraphics[width=4.7in]{mpidr_logo_colour_en}}
+\usepackage{color}
+\definecolor{mygray}{rgb}{0.8,0.8,0.8}
+
+\defbeamertemplate{description item}{align left}{\insertdescriptionitem\hfill}
+%%	should be the very last package to be loaded
+\usepackage{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%	Beginning of the document		%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%	titlepage - fixed frame:
+%%	========================
+
+\begin{frame}
+	\titlepage
+\end{frame}
+%-------------------
+\begin{frame}[plain]
+\begin{block}{Objective}
+We describe the construction and reflect on the composition of higher order
+temporal identities.
+\end{block}
+
+\end{frame}
+%-------------------
+
+%-------------------
+
+\begin{frame}[plain]
+\makebox[\linewidth]{\includegraphics[width=\paperwidth]{Figures/LexisSimple.JPG}}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\makebox[\linewidth]{\includegraphics[width=\paperwidth]{Figures/LexisSimple2.png}}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\begin{block}{APC identity}
+P -- C = A
+\end{block}
+\only<1>{\includegraphics[width=23cm]{Figures/APCtimeline.JPG}}
+\only<2>{\includegraphics[width=23cm]{Figures/APCtimeline2.png}}
+\only<3>{\includegraphics[width=23cm]{Figures/APCtimeline3.png}}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\begin{center}
+\only<1>{\includegraphics[height=18cm]{Figures/APCTri.JPG}}
+\only<2>{\includegraphics[height=18cm]{Figures/APCTri2.png}}
+\end{center}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\begin{center}
+\Large Some categories
+\begin{itemize}[<+->]
+  \item C is an anchored event
+  \item P scales over a lifeline
+  \item but any given P is anchored, so it's like an event.
+  \item A is a function of P, so it scales along lifelines too.
+\end{itemize}
+\end{center}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\begin{block}{Dimensionality}
+APC is based on 2 events. Its tesselated diagram is 2d. hmmm
+\end{block}
+\begin{center}
+\includegraphics[height=15cm]{Figures/APCTri2.png}
+\end{center}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\begin{center}
+\Large What happens if we add another event?\\ \vspace{1em}
+such as \emph{death}.
+\end{center}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\begin{block}{APCTDL identity}
+1) \{P -- C = A\}  ,  2) \{D -- P = T  \} , 3) \{D -- C = L\}
+\end{block}
+\begin{center}
+\includegraphics[width=23cm]{Figures/CPDtimeline.jpeg}
+\end{center}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\begin{center}
+\only<1>{\includegraphics[height=15cm]{Figures/apctdltetra.jpg}}
+\only<2>{\includegraphics[height=15cm]{Figures/apctdltetra2.png}}
+\end{center}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\begin{block}{Dimensionality}
+APCTDL has 3 events. Its extent after tesselation is 3d. hmmm
+\end{block}
+\vspace{1em}
+\begin{center}
+\includegraphics[scale=2]{Figures/contemporary-decorative-objects-and-figurines.jpg}
+
+a nice wooden tetrahedron
+\end{center}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\begin{center}
+\Large Further considerations
+\begin{itemize}[<+->]
+  \item $n$ events implies $n$-dimensionality
+  \item 3 events implies 3 durations.
+  \item in general $n$ events implies $\binom{n}{2}$ durations.
+\end{itemize}
+\end{center}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\begin{center}
+\Large $n$ events implies $\binom{n}{2}$ durations
+
+\only<1>{\vspace{1em}\includegraphics[height=7cm]{Figures/Gp2.jpeg} ~
+\includegraphics[height=7cm]{Figures/Gp3.jpeg} ~
+\includegraphics[height=7cm]{Figures/Gp4.jpeg}  
+
+~~
+}
+\only<2>{\vspace{1em}\includegraphics[height=7cm]{Figures/Gp22.png} ~
+\includegraphics[height=7cm]{Figures/Gp32.png} ~
+\includegraphics[height=7cm]{Figures/Gp42.png} 
+
+(Just complete the graph by connecting all ends)
+}
+
+\end{center}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\begin{center}
+\Large
+\begin{itemize}[<+->]
+  \item $n$ events gives $\binom{n}{2}$ durations
+  \item $n$ events gives an identity of $n + \binom{n}{2}$ time measures
+  \item This identity can be represented by a complete graph on $n+1$ vertices,
+  say $G^n$.
+  \item $G^n$ may have subidentities.
+\end{itemize}
+
+\end{center}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\begin{center}
+\Large
+\includegraphics[height=7cm]{Figures/Gp32.png} ~
+\includegraphics[height=7cm]{Figures/Gp42.png} 
+\begin{itemize}[<+->]
+  \item $\binom{n}{2}$ subidentities consist in two events plus a duration
+  \item $\binom{n}{3}$ subidentities consist in 3 durations only
+  \item There are $\binom{n+1}{n'}$ subidentities of size $n'$ in general
+\end{itemize}
+
+\end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%	End of the document			%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+
+
+
+
+
+
+
+
+
