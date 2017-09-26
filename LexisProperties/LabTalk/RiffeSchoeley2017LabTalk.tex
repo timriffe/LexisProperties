@@ -203,8 +203,8 @@ a nice wooden tetrahedron
 \begin{center}
 \Large
 \begin{itemize}[<+->]
-  \item $n$ events gives $\binom{n}{2}$ durations
-  \item $n$ events gives an identity of $n + \binom{n}{2}$ time measures
+  \item $n$ events imply $\binom{n}{2}$ durations
+  \item $n$ events imply an identity of $n + \binom{n}{2}$ time measures
   \item This identity can be represented by a complete graph on $n+1$ vertices,
   say $G^n$.
   \item $G^n$ may have subidentities.
@@ -223,10 +223,87 @@ a nice wooden tetrahedron
 \begin{itemize}[<+->]
   \item $\binom{n}{2}$ subidentities consist in two events plus a duration
   \item $\binom{n}{3}$ subidentities consist in 3 durations only
-  \item There are $\binom{n+1}{n'}$ subidentities of size $n'$ in general
+  \item There are $\binom{n+1}{n'+1}$ subidentities of dimension $n'$ in general
 \end{itemize}
 
 \end{center}
+
+\end{frame}
+
+% -----------------
+
+\begin{frame}[plain]
+% something on classes of subidentities
+\Large
+
+\begin{center}
+\only<1>{\includegraphics[height=12cm]{Figures/Composition.png}}
+\only<2>{\includegraphics[height=12cm]{Figures/Composition1.png}}
+\only<3>{\includegraphics[height=12cm]{Figures/Composition2.png}}
+\only<4>{\includegraphics[height=12cm]{Figures/Composition3.png}}
+
+A 4-event identity
+\end{center}
+
+\end{frame}
+
+% -----------------
+
+\begin{frame}[plain]
+% something on classes of subidentities
+\Large
+
+\begin{center}
+\includegraphics[height=8cm]{Figures/Composition3.png}
+\end{center}
+\begin{itemize}[<+->]
+  \item $\binom{n}{2}$ triads of 2 events and 1 duration
+  \item of which $\binom{n-1}{2}$ are 2 anchored events and 1 fixed duration
+  \item and $n-1$ are 1 anchored event, period, and 1 scaling duration.
+  \item $\binom{n}{2} = \binom{n-1}{2} + (n-1)$
+\end{itemize}
+\end{frame}
+
+% -----------------
+
+\begin{frame}[plain]
+% something on classes of subidentities
+\Large
+
+\begin{center}
+\includegraphics[height=8cm]{Figures/Composition3.png}
+\end{center}
+\begin{itemize}[<+->]
+  \item $\binom{n}{3}$ triads of 3 durations
+  \item of which $\binom{n-1}{3}$ are 3 fixed
+  durations
+  \item and $\binom{n-1}{2}$ are of 2 scaling and 1 fixed duration
+  \item $\binom{n}{3} = \binom{n-1}{3} + \binom{n-1}{2}$
+\end{itemize}
+\end{frame}
+
+% -----------------
+
+\begin{frame}[plain]
+% something on classes of subidentities
+
+\begin{center}
+\includegraphics[scale=1]{Figures/id3compmarked.pdf}
+\end{center}
+
+\end{frame}
+
+% -----------------
+
+\begin{frame}[plain]
+% something on classes of subidentities
+\Large
+
+\begin{block}{Identifiability}
+Given an id from $n$ events, there are $(n+1)^{(n-1)}$ potential sets of $n$
+time measures (events and/or durations) whose linear combination yields the full
+implied identity. These can be represented as the minimal spanning trees of $G^n$.
+\end{block}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
