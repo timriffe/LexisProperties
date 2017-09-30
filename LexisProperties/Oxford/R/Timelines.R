@@ -402,7 +402,11 @@ draw.tree <- function(n=4, edges, lprop = .5, x = 0, y = 0, add = FALSE, label =
 	} 
 	all.edges$col <- col
 	# select those specified
-	edges.draw 	<- all.edges[all.edges$name %in% edges, ]
+	if (!missing(edges)){
+		edges.draw 	<- all.edges[all.edges$name %in% edges, ]
+	} else {
+		edges.draw 	<- all.edges
+	}
 	
 	if (!add){
 		# create empty device

@@ -26,7 +26,7 @@
 
 \usepackage[mpidr]{./mpidr/beamerthemeMPIDR}
 \usefonttheme{serif}
-
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 %% Declaring title and author
 \title{Properties of generalized Lexis identities}
@@ -53,33 +53,193 @@
 	\titlepage
 \end{frame}
 %-------------------
+
 \begin{frame}[plain]
+\Large
 \begin{block}{Objective}
-We describe the construction and reflect on the composition and identification
-of higher order temporal identities.
+We describe the construction of and reflect on the composition of and
+identification in higher order temporal identities.
 \end{block}
 
 \end{frame}
-%-------------------
+
 
 %-------------------
 
 \begin{frame}[plain]
-\makebox[\linewidth]{\includegraphics[width=\paperwidth]{Figures/LexisSimple.JPG}}
+\only<1>{\includegraphics[width=\textwidth]{Figures/LexisSimplePlain1.pdf}}
+\only<2>{\includegraphics[width=\textwidth]{Figures/LexisSimplePlain2.pdf}}
+\only<3>{\includegraphics[width=\textwidth]{Figures/LexisSimplePlain3.pdf}}
+\only<4>{\includegraphics[width=\textwidth]{Figures/LexisSimplePlain4.pdf}}
+\end{frame}
+
+\begin{frame}[plain]
+\begin{center}
+\Large
+Lexis' 3d marriage identity
+\vspace{2em}
+
+\includegraphics[scale=5]{Figures/LexisMarriageID.JPG}
+\end{center}
+\vspace{1em}
+\small
+Lexis (1875)
+\end{frame}
+
+\begin{frame}[plain]
+\Large
+\begin{center}
+Lexis' 3d marriage identity
+\vspace{1em}
+\begin{itemize}
+  \item Birth cohort
+  \item Marriage cohort
+  \item Separation cohort
+  \item Age at marriage
+  \item Age at separation
+  \item Length of marriage
+\end{itemize}
+\end{center}
+\end{frame}
+
+%\begin{frame}[plain]
+%\Large
+%\begin{center}
+%Riffe, et al. (2017) 3d identity
+%\vspace{1em}
+%\begin{itemize}
+%  \item Birth cohort
+ % \item Period
+%  \item Time of death
+%  \item Age
+%  \item Time until death
+%  \item Length of life
+%\end{itemize}
+%\end{center}
+
+%\end{frame}
+
+%---------------------------
+
+\begin{frame}[plain]
+\Large
+\begin{center}
+Brinks' (2014) 4d identity
+
+\vspace{2em}
+\includegraphics[scale=1.3]{Figures/Brinks2014.png}
+\end{center}
+\end{frame}
+
+%-------------------
+\newcolumntype{S}{ >{\centering\arraybackslash} m{2cm} }
+\newcolumntype{D}{ >{\centering\arraybackslash} m{5.4cm} }
+\newcolumntype{E}{ >{\centering\arraybackslash} m{3.7cm} }
+
+\begin{frame}[plain]
+\begin{center}
+\begin{tabular}{S D}
+dim & vec space \\
+\hline
+2 & \includegraphics[scale=.3]{Figures/2dvec.pdf} \\
+3 & \includegraphics[scale=.3]{Figures/3dvec.pdf} \\
+4 & \includegraphics[scale=.3]{Figures/4dvec.pdf} \\
+\end{tabular}
+\end{center}
+\end{frame}
+
+% ---------------------
+
+\begin{frame}[plain]
+\begin{center}
+\begin{tabular}{S D}
+dim & graph \\
+\hline
+2 & \includegraphics[scale=.3]{Figures/2dgraph.pdf} \\
+3 & \includegraphics[scale=.3]{Figures/3dgraph.pdf} \\
+4 & \includegraphics[scale=.3]{Figures/4dgraph.pdf} \\
+\end{tabular}
+\end{center}
 \end{frame}
 
 %-------------------
 
 \begin{frame}[plain]
-\makebox[\linewidth]{\includegraphics[width=\paperwidth]{Figures/LexisSimple2.png}}
+\Large
+\begin{center}
+Some thoughts on identification
+\end{center}
 \end{frame}
 
 %-------------------
 
 \begin{frame}[plain]
-\begin{block}{APC identity}
-P -- C = A
-\end{block}
+\begin{center}
+\only<1>{\includegraphics[scale=.9]{Figures/n2_1.pdf}}
+\only<2>{\includegraphics[scale=.9]{Figures/n2_2.pdf}}
+\end{center}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\Large
+\begin{center}
+\includegraphics[scale=.7]{Figures/n3marked.pdf}
+\end{center}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\Large
+\begin{center}
+\includegraphics[scale=.7]{Figures/n3MST.pdf}
+\end{center}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\Large
+\begin{center}
+\includegraphics[scale=.7]{Figures/n4MST.pdf}
+\end{center}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\Large
+\begin{center}
+\includegraphics[scale=.7]{Figures/n5MST.pdf}
+\end{center}
+\end{frame}
+
+%-------------------
+
+\begin{frame}[plain]
+\Large
+\begin{center}
+\includegraphics[scale=.7]{Figures/n6MST.pdf}
+\end{center}
+\end{frame}
+
+%------------------
+
+\begin{frame}[plain]
+\Large
+\begin{center}
+\only<1>{So there's a lot you \emph{can} identify without nuance.}
+\only<2>{Exactly $(n+1)^{(n-1)}$ MSTs on n events.}
+\only<3>{And $\binom{n+1}{3}$ 2d simplices in an $n$-dimensional temporal
+identity.}
+\end{center}
+\end{frame}
+
+%------------------
+
+\begin{frame}[plain]
 \only<1>{\includegraphics[width=23cm]{Figures/APCtimeline.JPG}}
 \only<2>{\includegraphics[width=23cm]{Figures/APCtimeline2.png}}
 \only<3>{\includegraphics[width=23cm]{Figures/APCtimeline3.png}}
@@ -89,163 +249,24 @@ P -- C = A
 
 \begin{frame}[plain]
 \Large
+\begin{center}
 Events and durations are key.
+\end{center}
 \end{frame}
 
 %-------------------
 
 \begin{frame}[plain]
 \Large
-Events may be anchored or scale\\
-Durations may be either scaling or fixed\\
-Scaling time measures move along a lifeline, whereas anchored events and fixed
-durations are lifelong attributes.
-\end{frame}
-
-
-%-------------------
-
-\begin{frame}[plain]
 \begin{center}
-\only<1>{\includegraphics[height=18cm]{Figures/APCTri.JPG}}
-\only<2>{\includegraphics[height=18cm]{Figures/APCTri2.png}}
+\only<1>{Events determine dimensionality.}
+\only<2>{Events are either \emph{anchored} in time or calendar breadcrumbs:
+\emph{period}.} 
+\only<3>{Event types determine duration types: \emph{fixed} or
+\emph{scaling}.}
+\only<4>{The combination of these four types of time measures imply four
+different kinds of 2d identities.} 
 \end{center}
-\end{frame}
-
-%-------------------
-
-\begin{frame}[plain]
-\begin{center}
-\Large Some categories
-\begin{itemize}[<+->]
-  \item C is an anchored event
-  \item P scales over a lifeline
-  \item but any given P is anchored, so it's like an event.
-  \item A is a function of P, so it scales along lifelines too.
-\end{itemize}
-\end{center}
-\end{frame}
-
-%-------------------
-
-\begin{frame}[plain]
-\begin{block}{Dimensionality}
-APC is based on 2 events. Its tesselated diagram is 2d. hmmm
-\end{block}
-\begin{center}
-\includegraphics[height=15cm]{Figures/APCTri2.png}
-\end{center}
-\end{frame}
-
-%-------------------
-
-\begin{frame}[plain]
-\begin{center}
-\Large What happens if we add another event?\\ \vspace{1em}
-such as \emph{death}.
-\end{center}
-\end{frame}
-
-%-------------------
-
-\begin{frame}[plain]
-\begin{block}{APCTDL identity}
-1) \{P -- C = A\}  ,  2) \{D -- P = T  \} , 3) \{D -- C = L\}
-\end{block}
-\begin{center}
-\includegraphics[width=23cm]{Figures/CPDtimeline.jpeg}
-\end{center}
-\end{frame}
-
-%-------------------
-
-\begin{frame}[plain]
-\begin{center}
-\only<1>{\includegraphics[height=15cm]{Figures/apctdltetra.jpg}}
-\only<2>{\includegraphics[height=15cm]{Figures/apctdltetra2.png}}
-\end{center}
-\end{frame}
-
-%-------------------
-
-\begin{frame}[plain]
-\begin{block}{Dimensionality}
-APCTDL has 3 events. Its extent after tesselation is 3d. hmmm
-\end{block}
-\vspace{1em}
-\begin{center}
-\includegraphics[scale=2]{Figures/contemporary-decorative-objects-and-figurines.jpg}
-
-a nice wooden tetrahedron
-\end{center}
-\end{frame}
-
-%-------------------
-
-\begin{frame}[plain]
-\begin{center}
-\Large Further considerations
-\begin{itemize}[<+->]
-  \item $n$ events implies $n$-dimensionality
-  \item 3 events implies 3 durations.
-  \item in general $n$ events implies $\binom{n}{2}$ durations.
-\end{itemize}
-\end{center}
-\end{frame}
-
-%-------------------
-
-\begin{frame}[plain]
-\begin{center}
-\Large $n$ events implies $\binom{n}{2}$ durations
-
-\only<1>{\vspace{1em}\includegraphics[height=7cm]{Figures/Gp2.jpeg} ~
-\includegraphics[height=7cm]{Figures/Gp3.jpeg} ~
-\includegraphics[height=7cm]{Figures/Gp4.jpeg}  
-
-~~
-}
-\only<2>{\vspace{1em}\includegraphics[height=7cm]{Figures/Gp22.png} ~
-\includegraphics[height=7cm]{Figures/Gp32.png} ~
-\includegraphics[height=7cm]{Figures/Gp42.png} 
-
-(Just complete the graph by connecting all ends)
-}
-
-\end{center}
-\end{frame}
-
-%-------------------
-
-\begin{frame}[plain]
-\begin{center}
-\Large
-\begin{itemize}[<+->]
-  \item $n$ events imply $\binom{n}{2}$ durations
-  \item $n$ events imply an identity of $n + \binom{n}{2}$ time measures
-  \item This identity can be represented by a complete graph on $n+1$ vertices,
-  say $G^n$.
-  \item $G^n$ may have subidentities.
-\end{itemize}
-
-\end{center}
-\end{frame}
-
-%-------------------
-
-\begin{frame}[plain]
-\begin{center}
-\Large
-\includegraphics[height=7cm]{Figures/Gp32.png} ~
-\includegraphics[height=7cm]{Figures/Gp42.png} 
-\begin{itemize}[<+->]
-  \item $\binom{n}{2}$ subidentities consist in two events plus a duration
-  \item $\binom{n}{3}$ subidentities consist in 3 durations only
-  \item There are $\binom{n+1}{n'+1}$ subidentities of dimension $n'$ in general
-\end{itemize}
-
-\end{center}
-
 \end{frame}
 
 % -----------------
@@ -253,51 +274,21 @@ a nice wooden tetrahedron
 \begin{frame}[plain]
 % something on classes of subidentities
 \Large
-
 \begin{center}
-\only<1>{\includegraphics[height=12cm]{Figures/Composition.png}}
-\only<2>{\includegraphics[height=12cm]{Figures/Composition1.png}}
-\only<3>{\includegraphics[height=12cm]{Figures/Composition2.png}}
-\only<4>{\includegraphics[height=12cm]{Figures/Composition3.png}}
+\includegraphics[height=12cm]{Figures/Composition3.png}
 
 A 4-event identity
 \end{center}
-
 \end{frame}
 
-% -----------------
+%-------------------
 
 \begin{frame}[plain]
-% something on classes of subidentities
-\Large
-
 \begin{center}
-\includegraphics[height=8cm]{Figures/Composition3.png}
+\only<1>{\includegraphics[scale=.9]{Figures/id3types1.pdf}}
+\only<2>{\includegraphics[scale=.9]{Figures/id3types2.pdf}}
+\only<3>{\includegraphics[scale=.9]{Figures/id3types3.pdf}}
 \end{center}
-\begin{itemize}[<+->]
-  \item $\binom{n}{2}$ triads of 2 events and 1 duration
-  \item of which $\binom{n-1}{2}$ are 2 anchored events and 1 fixed duration
-  \item and $n-1$ are 1 anchored event, period, and 1 scaling duration.
-  \item $\binom{n}{2} = \binom{n-1}{2} + (n-1)$
-\end{itemize}
-\end{frame}
-
-% -----------------
-
-\begin{frame}[plain]
-% something on classes of subidentities
-\Large
-
-\begin{center}
-\includegraphics[height=8cm]{Figures/Composition3.png}
-\end{center}
-\begin{itemize}[<+->]
-  \item $\binom{n}{3}$ triads of 3 durations
-  \item of which $\binom{n-1}{3}$ are 3 fixed
-  durations
-  \item and $\binom{n-1}{2}$ are of 2 scaling and 1 fixed duration
-  \item $\binom{n}{3} = \binom{n-1}{3} + \binom{n-1}{2}$
-\end{itemize}
 \end{frame}
 
 % -----------------
@@ -313,27 +304,22 @@ A 4-event identity
 
 % -----------------
 
-\begin{frame}[plain]
-% something on classes of subidentities
-\Large
 
-\begin{block}{Identifiability}
-Given an id from $n$ events, there are $(n+1)^{(n-1)}$ potential sets of $n$
-time measures (events and/or durations) whose linear combination yields the full
-implied identity. These can be represented as the minimal spanning trees (MST)
-of $G^n$.
-\end{block}
-
-\end{frame}
 
 \begin{frame}
-
+\Large
 \begin{center}
-\includegraphics[height = .8\textheight]{Figures/sorting-hat-spider.jpg}
+
+  \begin{center}
+        \begin{tikzpicture}
+            \node[anchor=south west,inner sep=0] (image) at (0,0)
+            {\includegraphics[width=1\textheight]{Figures/n2_7.pdf}}; \node[align=center,font={\Huge\bfseries}] at (image.center) {Thanks!\\
+riffe@demogr.mpg.de};
+        \end{tikzpicture}
+    \end{center}
+
 \end{center}
 
-``Sorting Hat'' Spider (Eriovixia gryffindori). Location: India\\
-HT \url{http://earthsky.org}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%	End of the document			%%
