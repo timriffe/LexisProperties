@@ -1,10 +1,20 @@
 
 # Author: tim
 ###############################################################################
-setwd("/home/tim/git/LexisProperties/LexisProperties/Art")
 
-source("/home/tim/git/LexisProperties/LexisProperties/Oxford/R/Timelines.R")
-source("/home/tim/git/LexisProperties/LexisProperties/Oxford/R/Functions.R")
+this.comp <- system("hostname",intern=TRUE)
+if (this.comp == "tim-ThinkPad-L440"){
+	setwd("/home/tim/git/LexisProperties/LexisProperties")
+	source("Oxford/R/Timelines.R")
+	source("Oxford/R/Functions.R")
+}
+if (this.comp == "PC-403478"){
+	setwd("U:\\git\\LexisProperties\\LexisProperties")
+	source("Oxford\\R\\Timelines.R")
+	source("Oxford\\R\\Functions.R")
+}
+
+
 library(gridBase)
 library(grid)
 library(devtools)
@@ -219,12 +229,12 @@ xc         <- (col(plot.order) - 1) * 2.5 + 1
 yc         <- (row(plot.order)-1) * 2.5 + 1
 yc         <- abs(yc-max(yc)) + 1
 
-pdf("Figures/n5MST.pdf",height=10,width=10)
+pdf(file.path("Art","n5MST.pdf"),height=10,width=10)
 par(xpd=TRUE,bg="white", xaxs="i",yaxs="i",mai=c(.5,.5,.5,.5))
 plot(NULL,type='n',xlim=range(xc)+c(-1,1),ylim=range(yc)+c(-1,1),asp=1,axes=FALSE, xlab="",ylab ="")
 for (i in 1:length(n5)){
-	#draw.tree(5,n5[[i]],label=FALSE, lprop=.3,add = TRUE,cex=.5,x=xc[i], y = yc[i], col = gray(.3), lwd =  1)
-	draw.tree2(5,n5[[i]],label=FALSE, lprop=.3,add = TRUE,cex=.5,x=xc[i], y = yc[i], col = gray(.3), lwd =  1)
+	draw.tree(5,n5[[i]],label=FALSE, lprop=.3,add = TRUE,cex=.5,x=xc[i], y = yc[i], col = gray(.3), lwd =  1)
+	#draw.tree2(5,n5[[i]],label=FALSE, lprop=.3,add = TRUE,cex=.5,x=xc[i], y = yc[i], col = gray(.3), lwd =  1)
 	
 }
 dev.off()
