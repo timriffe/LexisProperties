@@ -124,8 +124,64 @@ sketched.brushed.segment <- function(x0,y0,x1,y1,
 	}
 }
 
-draw.tree2 <- function(n=4, edges, lprop = .5, x = 0, 
-		y = 0, add = FALSE, label = TRUE, col = NULL,alpha=1,...){
+jittersegment <- function(x0,y0,x1,y1,
+		nstrokes=3,
+		l.tremble.max = .05, # max variation on end point x0,y0
+		r.tremble.max = l.tremble.max,
+		place.tremble.max = .05,
+		lwd.min = .2,
+		lwd.max = 2,
+    col,
+		gray.min = 0,
+		gray.max = .6,
+		...){
+	
+	nstrokes <- rpois(1, nstrokes)
+	if (nstrokes == 0){
+		nstrokes <- 2
+	}
+	l.tremble.max 		<- abs(l.tremble.max)
+	r.tremble.max 		<- abs(r.tremble.max)
+	place.tremble.max	<- abs(place.tremble.max)
+	
+	# placement pars
+	l.scale       		<- runif(nstrokes, min = -l.tremble.max, max = l.tremble.max)
+	r.scale       		<- runif(nstrokes, min = -r.tremble.max, max = r.tremble.max)
+	
+	# separate trembles for x and y implies angles can change.
+	l.place.tremble.x 	<- runif(nstrokes, min = -place.tremble.max, max = place.tremble.max)
+	r.place.tremble.x   <- runif(nstrokes, min = -place.tremble.max, max = place.tremble.max)
+	l.place.tremble.y 	<- runif(nstrokes, min = -place.tremble.max, max = place.tremble.max)
+	r.place.tremble.y   <- runif(nstrokes, min = -place.tremble.max, max = place.tremble.max)
+	
+	# graphical pars
+	lwd.all             <- runif(nstrokes, min = lwd.min, max = lwd.max)
+	gray.all            <- runif(nstrokes, min = gray.min, max = gray.max)
+	
+	# create coord vectors
+	x0 					<- rep(x0, nstrokes)
+	y0 					<- rep(y0, nstrokes)
+	x1 					<- rep(x1, nstrokes)
+	y1 					<- rep(y1, nstrokes)
+	
+	# shift coord vectors
+	x0 					<- x0 + l.scale + l.place.tremble.x
+	y0 					<- y0 + l.scale + l.place.tremble.y
+	x1 					<- x1 + r.scale + r.place.tremble.x
+	y1 					<- y1 + r.scale + r.place.tremble.y
+	if (missing(col)){
+    col <- gray(gray.all)
+	}
+  
+	# render
+	segments(x0,y0,x1,y1,col = col, lwd = lwd.all,...)
+}
+
+
+
+
+draw.tree.jitter <- function(n=4, edges, lprop = .5, x = 0, 
+		y = 0, add = FALSE, label = TRUE, col,...){
 	p 			<- rep(1,n)
 	n1    		<- n + 1
 	# get coords for the n+1 vertices
@@ -146,13 +202,10 @@ draw.tree2 <- function(n=4, edges, lprop = .5, x = 0,
 	# join event and duration edges
 	all.edges 	<- rbind(pp,durs)
 	
-	if (is.null(col)){
-		col <- rep("black",nrow(all.edges))
-	} 
-	all.edges$col <- col
+  ind <- all.edges$name %in% edges
 	# select those specified
 	if (!missing(edges)){
-		edges.draw 	<- all.edges[all.edges$name %in% edges, ]
+		edges.draw 	<- all.edges[ind, ]
 	} else {
 		edges.draw 	<- all.edges
 	}
@@ -174,8 +227,11 @@ draw.tree2 <- function(n=4, edges, lprop = .5, x = 0,
 		y2 <- verts$y[to] + y
 		
 		#segments(x1,y1,x2,y2,col=edges.draw$col[i],...)
-		sketched.brushed.segment(x0=x1,y0=y1,x1=x2,y1=y2,
-				col=adjustcolor(edges.draw$col[i],alpha.f=alpha),...) 
+    if (!missing(col)){
+      jittersegment(x0 = x1, y0 = y1, x1 = x2, y1 = y2, col = col[ind][i], ...) 
+    } else {
+      jittersegment(x0 = x1, y0 = y1, x1 = x2, y1 = y2, ...) 
+    }
 		if (label){
 			lx <- x1*lpropi+x2*(1-lpropi)
 			ly <- y1*lpropi+y2*(1-lpropi)
@@ -187,23 +243,26 @@ draw.tree2 <- function(n=4, edges, lprop = .5, x = 0,
 	invisible(out)
 }
 
+
+
+getwd()
 pdf("test.pdf")
 par(xpd=TRUE,bg="white", xaxs="i",yaxs="i",mai=c(0,0,0,0))
 plot(NULL,type='n',xlim=c(-1,1),ylim=c(-1,1),asp=1,axes=FALSE, xlab="",ylab ="")
-draw.tree2(n=5,col = "#222222",label=FALSE, add = TRUE,
-		lwd.scatter = 25,
-		length.tremble = .05,
-		lwd=1,
-		edge.tremble=.1,
-		nstrokes=3,
-		njiggles=100,
-		placement.tremble = 1
+draw.tree.jitter(n=5,label=FALSE, add = T,
+		nstrokes = 2,
+		l.tremble.max = .02,
+        place.tremble.max = .02,
+		lwd.min = .5,
+        lwd.max = 5,
+		gray.min = .5,
+		gray.max = .8
 		)
 dev.off()
-draw.tree2(n=5,c("p1","p2","p3","p4","d1","d2"),col = "#222222",label=FALSE,
-		placement.tremble = .04, 
-		lwd.scatter = 25,
-		length.tremble = .05)
+# draw.tree2(n=5,c("p1","p2","p3","p4","d1","d2"),col = "#222222",label=FALSE,
+# 		placement.tremble = .04, 
+# 		lwd.scatter = 25,
+# 		length.tremble = .05)
 #x0=1;y0=1;x1=9;y1=9;lwd=.2
 #pdf("test.pdf")
 #par(mai=c(0,0,0,0),xaxs="i",yaxs="i")
@@ -252,7 +311,8 @@ durs$dur 	<- NULL
 # make same for period measures, colnames must match
 pp 			<- data.frame(pfrom = 1:n, 
 		pto = rep(n1,n), 
-		name = paste0("p",1:n))
+		name = paste0("p",1:n),
+    stringsAsFactors = FALSE)
 all.edges 	<- rbind(pp,durs)
 
 combos2     <- combn(1:nrow(all.edges),2)
@@ -279,29 +339,90 @@ xc         <- (col(plot.order) - 1) * 2.5 + 1
 yc         <- (row(plot.order)-1) * 2.5 + 1
 yc         <- abs(yc-max(yc)) + 1
 verts$n <- 1:n1
+xc2 <- jitter(xc,factor=.06)
 
-pdf("Triadsn5.pdf",width=12,height=12)
+yc2 <- jitter(yc,factor=.06)
+
+pdf("Triadsn5background.pdf",width=12,height=12)
 par(xpd=TRUE,bg="white", xaxs="i",yaxs="i",mai=c(.5,.5,.5,.5))
 plot(NULL,type='n',xlim=range(xc)+c(-1,1),ylim=range(yc)+c(-1,1),asp=1,axes=FALSE, xlab="",ylab ="")
 for (i in 1:ncol(v3)){
-	draw.tree(5,all.edges$name,label=FALSE, col = gray(.8), lwd =  .3,add=TRUE,x=xc[i], y = yc[i])
+	draw.tree.jitter(5,all.edges$name,label=FALSE, add=TRUE,x=xc2[i], y = yc2[i],
+	                 nstrokes = 2,
+	                 l.tremble.max = .02,
+	                 place.tremble.max = .015,
+	                 lwd.min = .05,
+	                 lwd.max = .1,
+	                 gray.min = .6,
+	                 gray.max = .8)
 	
-	ni      <- v3[,i]
-	edges.i <- all.edges[all.edges$pfrom %in% ni & all.edges$pto %in% ni,]
-	names.i <- edges.i$name
-	pcol <- ifelse("p3" %in% names.i, "#f9311b50",
-			ifelse(any(c("p1","p2","p4","p5")%in%names.i),"#b62dd230",
-					ifelse(any(c("d2","d3","d6","d9")%in%names.i),"#ea9c2750","#eee54050")))
-	polygon(x=verts$x[ni]+xc[i],
-			y=verts$y[ni]+yc[i],
-			col = pcol,
-			border = NA)
-	draw.tree(5,edges.i$name,label=FALSE, col = all.edges$col, lwd =  2,add=TRUE,x=xc[i], y = yc[i])
-	
+# 	ni      <- v3[,i]
+# 	edges.i <- all.edges[all.edges$pfrom %in% ni & all.edges$pto %in% ni,]
+# 	names.i <- edges.i$name
+# 	pcol <- ifelse("p3" %in% names.i, "#f9311b50",
+# 			ifelse(any(c("p1","p2","p4","p5")%in%names.i),"#b62dd230",
+# 					ifelse(any(c("d2","d3","d6","d9")%in%names.i),"#ea9c2750","#eee54050")))
+# 	polygon(x=verts$x[ni]+xc[i],
+# 			y=verts$y[ni]+yc[i],
+# 			col = pcol,
+# 			border = NA)
+# # 	draw.tree(5,edges.i$name,label=FALSE, col = adjustcolor(all.edges$col,alpha=.7), 
+# #   lwd =  2,add=TRUE,x=xc[i], y = yc[i])
+#  	draw.tree.jitter(5,edges=edges.i$name,label=FALSE, add=TRUE,x=xc[i], y = yc[i],
+#  	                 nstrokes = 2,
+#  	                 l.tremble.max = .01,
+#  	                 place.tremble.max = .01,
+#  	                 lwd.min = .5,
+#  	                 lwd.max = 2.5,
+#  	                 col = adjustcolor(all.edges$col, alpha=.6)
+#  	                )
 }
 dev.off()
+
+pdf("Triadsn5foreground.pdf",width=12,height=12)
+par(xpd=TRUE,bg="white", xaxs="i",yaxs="i",mai=c(.5,.5,.5,.5))
+plot(NULL,type='n',xlim=range(xc)+c(-1,1),ylim=range(yc)+c(-1,1),asp=1,axes=FALSE, xlab="",ylab ="")
+for (i in 1:ncol(v3)){
+#   draw.tree.jitter(5,all.edges$name,label=FALSE, add=TRUE,x=xc2[i], y = yc2[i],
+#                    nstrokes = 2,
+#                    l.tremble.max = .02,
+#                    place.tremble.max = .015,
+#                    lwd.min = .05,
+#                    lwd.max = .1,
+#                    gray.min = .6,
+#                    gray.max = .8)
+#   
+  ni      <- v3[,i]
+  edges.i <- all.edges[all.edges$pfrom %in% ni & all.edges$pto %in% ni,]
+  names.i <- edges.i$name
+  pcol <- ifelse("p3" %in% names.i, "#f9311b50",
+                 ifelse(any(c("p1","p2","p4","p5")%in%names.i),"#b62dd230",
+                        ifelse(any(c("d2","d3","d6","d9")%in%names.i),"#ea9c2750","#eee54050")))
+  polygon(x=verts$x[ni]+xc[i],
+          y=verts$y[ni]+yc[i],
+          col = pcol,
+          border = NA)
+  # 	draw.tree(5,edges.i$name,label=FALSE, col = adjustcolor(all.edges$col,alpha=.7), 
+  #   lwd =  2,add=TRUE,x=xc[i], y = yc[i])
+  draw.tree.jitter(5,edges=edges.i$name,label=FALSE, add=TRUE,x=xc[i], y = yc[i],
+                   nstrokes = 2,
+                   l.tremble.max = .01,
+                   place.tremble.max = .01,
+                   lwd.min = .5,
+                   lwd.max = 2.5,
+                   col = adjustcolor(all.edges$col, alpha=.6)
+  )
+}
+dev.off()
+
+
+
+
 # n5 labelled
 draw.tree(5,all.edges$name,label=TRUE, lprop=.3,cex=.5, col = all.edges$col, lwd =  1)
 
+draw.tree(5,label=FALSE, add=F,x=0, y = 0,
+                
+                 col = all.edges$col
+)
 
-all.edges
